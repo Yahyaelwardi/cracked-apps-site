@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كراكد أبس - تطبيقات وألعاب مهكرة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: system-ui; }
+        .app-card { transition: all 0.3s; }
+        .app-card:hover { transform: scale(1.05); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <header class="bg-black py-6 border-b border-red-500">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl">🔓</span>
+                <h1 class="text-3xl font-bold">كراكد أبس</h1>
+            </div>
+            <nav class="flex gap-6 text-lg">
+                <a href="#" class="hover:text-red-500">الرئيسية</a>
+                <a href="#" class="hover:text-red-500">التطبيقات</a>
+                <a href="#" class="hover:text-red-500">الألعاب</a>
+                <a href="#" class="hover:text-red-500">تحميل</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <input type="text" id="search" placeholder="ابحث عن تطبيق أو لعبة..." 
+                       class="bg-gray-800 px-4 py-2 rounded-full w-80 focus:outline-none focus:ring-2 focus:ring-red-500">
+                <button onclick="alert('بحث جاري... (هههه، هادي ديمو)')" 
+                        class="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-full">🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-bold mb-4">مرحبا في عالم المهكر 🔥</h2>
+            <p class="text-xl text-gray-400">أفضل التطبيقات والألعاب المهكرة مجانًا - بدون إعلانات، بدون قيود</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="apps-grid">
+            <!-- Apps will be populated by JS -->
+        </div>
+    </main>
+
+    <footer class="bg-black py-8 text-center border-t border-red-500">
+        <p>© 2026 كراكد أبس - للترفيه فقط 😉 | <span class="text-red-500">تحميل على مسؤوليتك الخاصة</span></p>
+    </footer>
+
+    <script>
+        const apps = [
+            { name: "Spotify Premium", desc: "الاستماع بدون إعلانات", icon: "🎵", link: "#" },
+            { name: "GTA VI", desc: "نسخة مهكرة كاملة", icon: "🎮", link: "#" },
+            { name: "Instagram Mod", desc: "تحميل فيديوهات بدون قيود", icon: "📸", link: "#" },
+            { name: "PUBG Mobile UC", desc: "يونان محدود", icon: "🔫", link: "#" },
+            { name: "Netflix", desc: "4K HDR بدون اشتراك", icon: "📺", link: "#" },
+            { name: "Minecraft", desc: "كل الـ Addons", icon: "⛏️", link: "#" }
+        ];
+
+        function renderApps() {
+            const grid = document.getElementById('apps-grid');
+            grid.innerHTML = apps.map(app => `
+                <div class="app-card bg-gray-800 rounded-2xl p-6 border border-red-500/30 hover:border-red-500">
+                    <div class="text-6xl mb-4">${app.icon}</div>
+                    <h3 class="text-2xl font-bold mb-2">${app.name}</h3>
+                    <p class="text-gray-400 mb-6">${app.desc}</p>
+                    <a href="${app.link}" 
+                       onclick="fakeDownload('${app.name}')"
+                       class="block bg-red-600 hover:bg-red-700 text-center py-3 rounded-xl font-semibold">تحميل النسخة المهكرة</a>
+                </div>
+            `).join('');
+        }
+
+        function fakeDownload(name) {
+            alert(`جاري تحميل ${name}... (في الواقع، حمل من تورنت يا صاحبي 😂)`);
+        }
+
+        window.onload = renderApps;
+
+        // TS flavor comment: This would be typed in real TS
+    </script>
+</body>
+</html>
